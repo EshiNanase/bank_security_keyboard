@@ -30,14 +30,12 @@ class Visit(models.Model):
             leaved_at = self.leaved_at.timestamp()
             entered_at = self.entered_at.timestamp()
             return (leaved_at - entered_at) // 3600
-        else:
-            return 0
+        return 0
 
     def get_visit_formatted_duration(self):
         if self.leaved_at:
             return self.leaved_at - self.entered_at
-        else:
-            return 'В хранилище'
+        return 'В хранилище'
 
     def get_current_visit_formatted_duration(self):
         local_time = timezone.localtime()
